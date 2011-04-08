@@ -1,0 +1,4 @@
+CURPATH="$(dirname "$0")/../"
+SRVROOT=`readlink -f "$CURPATH"`
+DOCROOT="$SRVROOT/htdocs"
+$APACHEBIN -d "${SRVROOT}/" -f conf/httpd.conf -C "Listen ${SRVPORT}" -C "PidFile ${SRVROOT}/logs/httpd.pid" -C "DocumentRoot ${DOCROOT}" -C "TypesConfig ${SRVROOT}/conf/mime.types" -C "ErrorLog ${SRVROOT}/logs/error_log" -C "CustomLog ${SRVROOT}/logs/access_log combined"
